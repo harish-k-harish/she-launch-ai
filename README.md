@@ -1,218 +1,185 @@
 # SheLaunch AI 🚀
+### *Fueling Her Vision. Funding Her Venture.*
 
-> **AI-Powered Startup Readiness, Funding Intelligence & Ecosystem Aggregation Platform for Women Entrepreneurs**
+[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
+[![Framework: Hono](https://img.shields.io/badge/Framework-Hono-E36002.svg)](https://hono.dev/)
+[![Bundler: Vite](https://img.shields.io/badge/Bundler-Vite-646CFF.svg)](https://vitejs.dev/)
+[![Runtime: Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare%20Pages-F38020.svg)](https://pages.cloudflare.com/)
+[![SDG Goals: 5, 8, 9, 10](https://img.shields.io/badge/SDG%20Goals-5%20%7C%208%20%7C%209%20%7C%2010-007dbc.svg)](https://sdgs.un.org/goals)
 
-Powered by Gemini AI · Built for Google AI Studio Hackathon · Aligned with SDG 5, 8, 9, 10
-
----
-
-## 🌟 Project Overview
-
-SheLaunch AI transforms fragmented startup ecosystems into intelligent growth pathways for women entrepreneurs. It replaces five different portals with one unified, AI-driven advisory system.
-
-### Problem
-Women entrepreneurs face:
-- Fragmented discovery of government schemes
-- No structured startup readiness evaluation
-- Lack of personalized funding pathway planning
-- Absence of AI-driven mentorship
-- No unified incubator discovery system
-
-### Solution
-An intelligent, Gemini-powered decision-support platform with 5 AI modules.
+> **SheLaunch AI** is an intelligent ecosystem that transforms fragmented startup journeys into structured growth pathways for women entrepreneurs. It delivers instant startup readiness diagnostics, investor matchmaking, curated government scheme eligibility, incubator discovery, and round-the-clock AI mentorship.
 
 ---
 
-## 🔗 URLs
-
-| Resource | URL |
-|----------|-----|
-| **Home** | `https://your-deployment.pages.dev/` |
-| **Assessment** | `https://your-deployment.pages.dev/assessment` |
-| **Funding Advisor** | `https://your-deployment.pages.dev/funding` |
-| **Scheme Aggregator** | `https://your-deployment.pages.dev/schemes` |
-| **Incubator Aggregator** | `https://your-deployment.pages.dev/incubators` |
-| **AI Mentor** | `https://your-deployment.pages.dev/mentor` |
-
-### API Endpoints
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/health` | GET | Platform health + stats |
-| `/api/schemes` | GET | Filter schemes (category, stage, sector, search) |
-| `/api/incubators` | GET | Filter incubators (equity, stage, women, search) |
-| `/api/assessment` | POST | Score startup assessment |
-| `/api/funding/plan` | POST | Generate funding roadmap |
-| `/api/mentor/chat` | POST | AI mentor chat (Gemini-ready) |
+## 🌟 Table of Contents
+- [Problem & Mission](#-problem--mission)
+- [Architecture & Tech Stack](#-architecture--tech-stack)
+- [5 Core Platform Modules](#-5-core-platform-modules)
+- [System Architecture Flow](#-system-architecture-flow)
+- [Project Directory Structure](#-project-directory-structure)
+- [Getting Started & Local Setup](#-getting-started--local-setup)
+- [API Reference](#-api-reference)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
-## 🧩 5 Core Modules
+## 🎯 Problem & Mission
 
-### Module 1: AI Mentor (4.1)
-- Conversational startup mentorship powered by Gemini AI
-- Domain-specific prompting for pitch, business model, compliance, grants
-- **PDF pitch deck upload** + analysis
-- Knowledge base: pitch structure, investor approach, DPIIT registration, market sizing, unit economics
-- Structured markdown responses with actionable feedback
+### The Problem
+Women entrepreneurs face distinct structural barriers in the startup ecosystem:
+- **Fragmented Discovery:** Government grants and support schemes are dispersed across dozens of portals with complex bureaucratic jargon.
+- **Lack of Readiness Benchmarking:** Early founders lack clear quantitative visibility into whether their venture is pitch-ready or investor-viable.
+- **Funding Asymmetry:** Less than 3% of global venture capital flows into female-founded startups due to network and preparation gaps.
+- **Access to Mentorship:** High barrier to affordable, on-demand strategic guidance and pitch deck feedback.
 
-### Module 2: Startup Readiness Assessment (4.2)
-- 12-question assessment form with rich UI
-- AI scoring across 6 dimensions: Market Traction, Team Strength, Financial Readiness, Product Differentiation, Compliance Readiness, Stage
-- **Readiness Score: 0-100** with categories (Early / Emerging / Growth Ready / Investment Ready)
-- 30–60 day action roadmap with priority actions
-- Dimension progress bars + strength/risk analysis
-
-### Module 3: Funding Pathway Advisor (4.3)
-- **RAG (Retrieval-Augmented Generation)** architecture
-- Retrieves matching schemes + incubators from curated database
-- Generates **sequenced funding strategy**: Grant → Incubator → Angel → VC
-- Pre-application checklist per stage
-- Startup profile form → personalized roadmap
-
-### Module 4: Government Scheme Aggregator (4.4)
-- **12+ verified, curated government schemes**
-- Categories: Central Government, State Government, Sector-Specific Grants
-- Smart filtering: by category, stage, sector, keyword search
-- Expandable cards with eligibility, documents, deadlines, apply links
-- Trust-first design — no AI hallucination, structured data only
-
-### Module 5: Incubator & Accelerator Aggregator (4.5)
-- **12+ top incubators** with full details
-- AI Match system: input startup profile → get match % scores + reasoning
-- Filters: equity model, women-focused, stage, keyword
-- Explainable AI matching with match percentage circles
-- Equity details, application process, success rates
+### The SheLaunch Mission
+Provide female founders with an AI-first co-pilot that evaluates startup health across 5 core pillars, matches capital opportunities, and guides them from idea to scale.
 
 ---
 
-## 📊 Data Architecture
+## 🏗️ Architecture & Tech Stack
 
-### Data Models
-
-**Scheme:**
-```typescript
-{
-  id, name, category, sector[], stage[], description,
-  eligibility, fundingAmount, documents[], deadline,
-  applicationLink, ministry, benefit
-}
+```mermaid
+graph TD
+    User([Founder / User]) --> Frontend[Responsive Web UI - Tailwind & HTML5]
+    Frontend --> Router[Hono Edge Router]
+    Router --> AssessmentAPI["/api/assessment (5-Pillar Diagnostics)"]
+    Router --> FundingAPI["/api/funding/plan (Capital Roadmap)"]
+    Router --> SchemesAPI["/api/schemes (Govt. Aggregator)"]
+    Router --> IncubatorsAPI["/api/incubators (Ecosystem Directory)"]
+    Router --> MentorAPI["/api/mentor/chat (Gemini AI Mentorship)"]
+    Router --> Cloudflare[Cloudflare Workers / Pages Edge Runtime]
 ```
 
-**Incubator:**
-```typescript
-{
-  id, name, location, sector[], stage[], equityModel,
-  equityPercentage?, fundingSupport, duration,
-  applicationProcess, applicationLink, highlights[],
-  focusOnWomen, successRate?, notableAlumni?
-}
-```
-
-### Storage Services
-- **Hono + Cloudflare Pages**: Edge deployment (no server)
-- **Structured JSON**: In-memory data layer (12 schemes, 12 incubators)
-- **Production Scaling**: Cloudflare D1 (SQLite) or Firebase Firestore
-- **API Layer**: RESTful endpoints via Hono router
+- **Frontend:** Responsive UI with Tailwind CSS, FontAwesome 6, and interactive vanilla JavaScript micro-components.
+- **Backend / Routing:** [Hono v4](https://hono.dev) — ultra-fast, lightweight web framework designed for edge computing.
+- **Build Tool:** Vite 6 with TypeScript support.
+- **Edge Deployment:** Cloudflare Pages / Workers via Wrangler.
+- **AI Intelligence:** Gemini AI prompt orchestration for contextual business mentoring and pitch deck analysis.
 
 ---
 
-## 🎯 SDG Alignment
+## 🧩 5 Core Platform Modules
 
-| SDG | Goal | How SheLaunch AI Contributes |
-|-----|------|------------------------------|
-| SDG 5 | Gender Equality | AI mentorship + exclusive women-focused scheme discovery |
-| SDG 8 | Decent Work & Growth | Funding roadmaps accelerate startup sustainability |
-| SDG 9 | Industry & Innovation | AI infrastructure democratizes innovation access |
-| SDG 10 | Reduced Inequalities | Eliminates information asymmetry for women founders |
-
----
-
-## 🏗️ Technical Architecture
-
-```
-Client Browser
-      ↓
-Cloudflare Pages (Edge CDN)
-      ↓
-Hono Worker (src/index.tsx)
-      ↓
-Page Routers + API Routes
-      ↓
-Data Layer (schemes.ts, incubators.ts)
-      ↓
-[Gemini API - Production Integration Ready]
-```
-
-### Tech Stack
-- **Backend**: Hono v4 (TypeScript)
-- **Frontend**: Inline HTML with Tailwind CSS (CDN)
-- **Icons**: FontAwesome 6.4
-- **Build**: Vite + @hono/vite-build
-- **Deploy**: Cloudflare Pages / Workers
-- **AI**: Gemini API integration ready (configure GEMINI_API_KEY)
+| Module | Route | Highlights |
+|---|---|---|
+| **1. Startup Readiness Diagnostic** | `/assessment` | Evaluates team, market size, product readiness, traction, and financials with multi-tier scoring (0-100) and gap analysis. |
+| **2. Funding Intelligence Advisor** | `/funding` | Generates milestone-driven capital roadmaps (Bootstrapping, Grants, Angels, Seed, VC). |
+| **3. Government Scheme Aggregator** | `/schemes` | Searchable directory of women-focused schemes (TREAD, Stand-Up India, Mudra, WEP, Startup India Seed Fund). |
+| **4. Incubator & Accelerator Directory** | `/incubators` | Curated network of incubators, equity-free programs, and women-exclusive accelerator cohorts. |
+| **5. 24/7 AI Strategic Mentor** | `/mentor` | Context-aware advisory agent for pitch deck teardowns, business model validation, and strategy. |
 
 ---
 
-## 🚀 Deployment
+## 📁 Project Directory Structure
 
-### Local Development
-```bash
-npm install
-npm run build
-pm2 start ecosystem.config.cjs
-```
-
-### Cloudflare Pages Deploy
-```bash
-npm run build
-npx wrangler pages deploy dist --project-name shelaunch-ai
-```
-
-### Environment Variables (Production)
-```bash
-# Set Gemini API key for live AI responses
-npx wrangler pages secret put GEMINI_API_KEY --project-name shelaunch-ai
+```text
+codesangram-main/
+├── public/                 # Static assets & stylesheets
+│   └── static/style.css
+├── src/
+│   ├── data/
+│   │   ├── incubators.ts   # Curated database of incubators & accelerators
+│   │   └── schemes.ts      # Indian & global government schemes dataset
+│   ├── pages/
+│   │   ├── assessment.tsx  # Readiness check engine & dynamic scorecards
+│   │   ├── funding.tsx     # Funding stage advisor & roadmap generator
+│   │   ├── home.tsx        # Hero landing page & feature highlights
+│   │   ├── incubators.tsx  # Incubator explorer & filter UI
+│   │   ├── mentor.tsx      # AI chat & document feedback interface
+│   │   └── schemes.tsx     # Scheme discovery portal
+│   ├── index.tsx           # Hono server routing & API endpoints
+│   └── renderer.tsx        # HTML renderer layout
+├── ecosystem.config.cjs    # PM2 runtime configuration
+├── tsconfig.json           # TypeScript configuration
+├── vite.config.ts          # Vite build & bundle setup
+├── wrangler.jsonc          # Cloudflare Pages deployment configuration
+└── README.md
 ```
 
 ---
 
-## 📱 User Guide
+## 🚀 Getting Started & Local Setup
 
-1. **Start with Assessment** (`/assessment`): Answer 12 questions about your startup. Get readiness score + roadmap.
-2. **Generate Funding Plan** (`/funding`): Enter startup profile → Get sequenced Grant → Incubator → Angel roadmap.
-3. **Discover Schemes** (`/schemes`): Browse 12+ verified government schemes. Filter by category and stage.
-4. **Find Incubators** (`/incubators`): Use AI Match to find best-fit incubators with match percentages.
-5. **Chat with AI Mentor** (`/mentor`): Ask any startup question. Upload pitch deck for analysis.
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18.0.0 or higher recommended)
+- `npm` or `pnpm`
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/harish-k-harish/she-launch-ai.git
+   cd she-launch-ai
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Launch development server:
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+4. Build for production:
+   ```bash
+   npm run build
+   ```
+
+5. Preview edge build locally:
+   ```bash
+   npm run preview
+   ```
 
 ---
 
-## ✅ MVP Scope Delivered
+## 🔌 API Reference
 
-- [x] User assessment form (12 questions)
-- [x] AI-based readiness scoring (0-100)
-- [x] 12 curated government schemes
-- [x] 12 curated incubators
-- [x] AI funding roadmap generation (RAG)
-- [x] AI Mentor chatbot with knowledge base
-- [x] PDF pitch deck upload + analysis
-- [x] Full REST API layer
-- [x] Responsive UI (mobile + desktop)
-- [x] SDG alignment markers
+### Health & Metadata
+- **`GET /api/health`**
+  - Returns service status, module counts, and platform statistics.
+
+### Scheme Discovery
+- **`GET /api/schemes`**
+  - Query parameters: `category`, `stage`, `sector`, `q` (search term).
+
+### Incubator Discovery
+- **`GET /api/incubators`**
+  - Query parameters: `equity`, `stage`, `womenOnly`, `q`.
+
+### Readiness Diagnostic
+- **`POST /api/assessment`**
+  - Body: `{ answers: Record<string, string>, sector: string, stage: string }`
+  - Returns: `{ score: number, breakdown: object, readinessLevel: string, recommendations: string[] }`
+
+### Funding Roadmap
+- **`POST /api/funding/plan`**
+  - Body: `{ stage: string, targetAmount: number, runwayMonths: number, sector: string }`
+  - Returns customized milestone timeline and matched funding types.
+
+### AI Mentor Chat
+- **`POST /api/mentor/chat`**
+  - Body: `{ message: string, history: Array<{ role: string, content: string }> }`
+  - Returns: `{ response: string }`
 
 ---
 
-## 🔮 Future Roadmap
+## 🤝 Contributing
 
-- [ ] Live Gemini API integration
-- [ ] Vertex AI embedding-based semantic retrieval
-- [ ] Real-time scheme scraping + updates
-- [ ] Regional language support (Hindi, Tamil, Telugu)
-- [ ] Firebase Auth user accounts
-- [ ] Analytics dashboard for policymakers
-- [ ] Startup India API integration
-- [ ] WhatsApp bot integration
+Contributions make the open-source community an empowering space to learn, inspire, and create. Any contributions to SheLaunch AI are **greatly appreciated**!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'feat: Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ---
 
-**Platform**: Cloudflare Pages · **Status**: ✅ Active · **Last Updated**: February 2026
+## 📄 License
+
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more information.
