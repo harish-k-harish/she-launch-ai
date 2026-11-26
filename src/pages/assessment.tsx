@@ -5,6 +5,11 @@ export const assessmentPage = () => `
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Startup Readiness Assessment – SheLaunch AI</title>
+<meta name="description" content="Evaluate your venture readiness across team, traction, market, product, and financials with instant AI scoring.">
+<meta name="theme-color" content="#7c3aed">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Startup Readiness Assessment – SheLaunch AI">
+<meta property="og:description" content="Instant 5-pillar startup readiness diagnostic and personalized gap analysis.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>

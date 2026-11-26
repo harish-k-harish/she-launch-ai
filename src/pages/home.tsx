@@ -4,7 +4,24 @@ export const homePage = () => `
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SheLaunch AI – AI-Powered Startup Platform for Women</title>
+<title>SheLaunch AI – Fueling Her Vision. Funding Her Venture.</title>
+<meta name="description" content="AI-powered startup readiness diagnostics, investor matchmaking, government scheme eligibility, and 24/7 strategic mentorship for women entrepreneurs.">
+<meta name="keywords" content="women entrepreneurs, startup funding, AI mentor, startup readiness, grants for women, incubators, pitch deck review">
+<meta name="theme-color" content="#7c3aed">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<!-- OpenGraph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shelaunch.pages.dev/">
+<meta property="og:title" content="SheLaunch AI – Fueling Her Vision. Funding Her Venture.">
+<meta property="og:description" content="AI-driven growth ecosystem for women founders: diagnostic scoring, capital matching, curated schemes, and round-the-clock advisory.">
+<meta property="og:image" content="https://shelaunch.pages.dev/favicon.svg">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SheLaunch AI – Fueling Her Vision. Funding Her Venture.">
+<meta name="twitter:description" content="AI-driven startup readiness, investor matchmaking, and mentorship built for women entrepreneurs.">
+<meta name="twitter:image" content="https://shelaunch.pages.dev/favicon.svg">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>

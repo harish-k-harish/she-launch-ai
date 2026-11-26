@@ -9,6 +9,11 @@ export const schemesPage = () => {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Government Schemes – SheLaunch AI</title>
+<meta name="description" content="Explore central and state government schemes, grants, and subsidies tailored for women-led startups in India.">
+<meta name="theme-color" content="#7c3aed">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Government Schemes Aggregator – SheLaunch AI">
+<meta property="og:description" content="Instant search & eligibility overview for women entrepreneur schemes.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>

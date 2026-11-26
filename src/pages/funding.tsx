@@ -11,6 +11,11 @@ export const fundingPage = () => {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Funding Pathway Advisor – SheLaunch AI</title>
+<meta name="description" content="Personalized funding roadmap generator: grants, angel networks, seed funding, and VC matching for women founders.">
+<meta name="theme-color" content="#059669">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Funding Pathway Advisor – SheLaunch AI">
+<meta property="og:description" content="Get tailored funding milestones and investor recommendations.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
